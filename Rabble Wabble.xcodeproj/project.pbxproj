@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		733BAFCE221F194C00A427DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733BAFCD221F194C00A427DA /* AppDelegate.swift */; };
-		733BAFD0221F194C00A427DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733BAFCF221F194C00A427DA /* ViewController.swift */; };
+		733BAFD0221F194C00A427DA /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733BAFCF221F194C00A427DA /* QuestionViewController.swift */; };
 		733BAFD3221F194C00A427DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733BAFD1221F194C00A427DA /* Main.storyboard */; };
 		733BAFD5221F195100A427DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733BAFD4221F195100A427DA /* Assets.xcassets */; };
 		733BAFD8221F195100A427DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733BAFD6221F195100A427DA /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		733BAFCA221F194C00A427DA /* Rabble Wabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rabble Wabble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		733BAFCD221F194C00A427DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		733BAFCF221F194C00A427DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		733BAFCF221F194C00A427DA /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		733BAFD2221F194C00A427DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		733BAFD4221F195100A427DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		733BAFD7221F195100A427DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +54,54 @@
 		733BAFCC221F194C00A427DA /* Rabble Wabble */ = {
 			isa = PBXGroup;
 			children = (
-				733BAFCD221F194C00A427DA /* AppDelegate.swift */,
-				733BAFCF221F194C00A427DA /* ViewController.swift */,
-				733BAFD1221F194C00A427DA /* Main.storyboard */,
-				733BAFD4221F195100A427DA /* Assets.xcassets */,
-				733BAFD6221F195100A427DA /* LaunchScreen.storyboard */,
-				733BAFD9221F195100A427DA /* Info.plist */,
+				73645D40221F4ED1002A1412 /* AppDelegate */,
+				73645D41221F4EE7002A1412 /* Controllers */,
+				73645D42221F4EF1002A1412 /* Models */,
+				73645D43221F4EF8002A1412 /* Resources */,
+				73645D44221F4F01002A1412 /* Views */,
 			);
 			path = "Rabble Wabble";
+			sourceTree = "<group>";
+		};
+		73645D40221F4ED1002A1412 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				733BAFCD221F194C00A427DA /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		73645D41221F4EE7002A1412 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				733BAFCF221F194C00A427DA /* QuestionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		73645D42221F4EF1002A1412 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		73645D43221F4EF8002A1412 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				733BAFD9221F195100A427DA /* Info.plist */,
+				733BAFD4221F195100A427DA /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		73645D44221F4F01002A1412 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				733BAFD1221F194C00A427DA /* Main.storyboard */,
+				733BAFD6221F195100A427DA /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				733BAFD0221F194C00A427DA /* ViewController.swift in Sources */,
+				733BAFD0221F194C00A427DA /* QuestionViewController.swift in Sources */,
 				733BAFCE221F194C00A427DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UXACY83E3F;
-				INFOPLIST_FILE = "Rabble Wabble/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Rabble Wabble/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UXACY83E3F;
-				INFOPLIST_FILE = "Rabble Wabble/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Rabble Wabble/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
