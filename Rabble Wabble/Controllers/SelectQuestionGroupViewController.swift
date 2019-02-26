@@ -32,6 +32,39 @@ extension SelectQuestionGroupViewController: UITableViewDataSource {
         
         return cell
     }
+}
+
+extension SelectQuestionGroupViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedQuestionGroup = questionGroups[indexPath.row]
+        return indexPath
+    }
+    
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let questionViewController = segue.destination as? QuestionViewController else {
+            return
+        }
+        
+        questionViewController.questionGroup = selectedQuestionGroup
+        
+        // Tells the owner that I want to be the one that conforms to your protocols
+        questionViewController.selectedGroupDelegate = self
+    }
+}
+
+extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
+    
+    // When either method is called by the owner, handle what to do
+    public func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int) {
+        navigationController?.popToViewController(self, animated: true)
+    }
+    public func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionGroup) {
+        navigationController?.popToViewController(self, animated: true)
+    }
     
     
 }

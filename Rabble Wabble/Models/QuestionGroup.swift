@@ -6,7 +6,7 @@
 //  Copyright © 2019 Fazeli, Bijan. All rights reserved.
 //
 
-struct QuestionGroup {
+public struct QuestionGroup {
     public let questions: [Question]
     public let title: String
 }

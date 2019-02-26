@@ -8,11 +8,29 @@
 
 import UIKit
 
-class QuestionViewController: UIViewController {
-    public var questionGroup = QuestionGroup.basicPhrases()
+// Questionviewcontroller delegats protocol for dismissing
+public protocol QuestionViewControllerDelegate: class {
+    func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int)
+    
+    func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionGroup)
+    
+}
+
+public class QuestionViewController: UIViewController {
+    public var questionGroup: QuestionGroup! {
+        didSet {
+            navigationItem.title = questionGroup.title
+        }
+    }
     public var questionIndex = 0
     public var correctCount = 0
     public var incorrectCount = 0
+    private lazy var questionIndexItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        return item
+    }()
     
     public var questionView: QuestionView! {
         guard isViewLoaded else {
@@ -22,9 +40,27 @@ class QuestionViewController: UIViewController {
         return (view as! QuestionView)
     }
     
+    // QuestionViewController owns QuestionViewControllerDelegate
+    //  Used weak due to protocol subclass specifying class to prevent memory retain cycle.
+    //  Wouldn't need weak if :class wasn't used
+    public weak var selectedGroupDelegate: QuestionViewControllerDelegate?
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
+        setupCancelButton()
         showQuestion()
+    }
+    
+    // Method for displaying top left bar button
+    private func setupCancelButton() {
+        let action = #selector(handleCancelPressed(sender:))
+        let image = UIImage(named: "ic_menu")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: action)
+    }
+    
+    // Method makes a call to the selectedGroupDelegate's didCancel
+    @objc private func handleCancelPressed(sender: UIBarButtonItem) {
+        selectedGroupDelegate?.questionViewController(self, didCancel: questionGroup, at: questionIndex)
     }
     
     private func showQuestion() {
@@ -36,6 +72,8 @@ class QuestionViewController: UIViewController {
         
         questionView.answerLabel.isHidden = true
         questionView.hintLabel.isHidden = true
+        
+        questionIndexItem.title = "\(questionIndex + 1)/\(questionGroup.questions.count)"
     }
     
     @IBAction func toggleAnswerLabels(_ sender: Any) {
@@ -58,12 +96,13 @@ class QuestionViewController: UIViewController {
     func showNextQuestion() {
         questionIndex += 1
         guard questionIndex < questionGroup.questions.count else {
-            // TODO: - Handle this...!
+            selectedGroupDelegate?.questionViewController(self, didComplete: questionGroup)
+            
             return
         }
         
         showQuestion()
     }
-
+    
 }
 

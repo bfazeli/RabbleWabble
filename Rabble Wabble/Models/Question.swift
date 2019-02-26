@@ -6,7 +6,7 @@
 //  Copyright © 2019 Fazeli, Bijan. All rights reserved.
 //
 
-struct Question {
+public struct Question {
     public let answer: String
     public let hint: String?
     public let prompt: String
