@@ -10,28 +10,13 @@ import UIKit
 
 // Questionviewcontroller delegats protocol for dismissing
 public protocol QuestionViewControllerDelegate: class {
-    func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int)
+    func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionStrategy)
     
-    func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionGroup)
+    func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionStrategy)
     
 }
 
 public class QuestionViewController: UIViewController {
-    public var questionGroup: QuestionGroup! {
-        didSet {
-            navigationItem.title = questionGroup.title
-        }
-    }
-    public var questionIndex = 0
-    public var correctCount = 0
-    public var incorrectCount = 0
-    private lazy var questionIndexItem: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        item.tintColor = .black
-        navigationItem.rightBarButtonItem = item
-        return item
-    }()
-    
     public var questionView: QuestionView! {
         guard isViewLoaded else {
             return nil
@@ -40,10 +25,23 @@ public class QuestionViewController: UIViewController {
         return (view as! QuestionView)
     }
     
+    private lazy var questionIndexItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        return item
+    }()
+    
     // QuestionViewController owns QuestionViewControllerDelegate
-    //  Used weak due to protocol subclass specifying class to prevent memory retain cycle.
+    //  Use weak due to protocol subclass specifying class to prevent memory retain cycle.
     //  Wouldn't need weak if :class wasn't used
     public weak var selectedGroupDelegate: QuestionViewControllerDelegate?
+    
+    public var questionStrategy: QuestionStrategy! {
+        didSet {
+            navigationItem.title = questionStrategy.title
+        }
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +58,11 @@ public class QuestionViewController: UIViewController {
     
     // Method makes a call to the selectedGroupDelegate's didCancel
     @objc private func handleCancelPressed(sender: UIBarButtonItem) {
-        selectedGroupDelegate?.questionViewController(self, didCancel: questionGroup, at: questionIndex)
+        selectedGroupDelegate?.questionViewController(self, didComplete: questionStrategy)
     }
     
     private func showQuestion() {
-        let question = questionGroup.questions[questionIndex]
+        let question = questionStrategy.currentQuestion()
         
         questionView.answerLabel.text = question.answer
         questionView.promptLabel.text = question.prompt
@@ -73,7 +71,7 @@ public class QuestionViewController: UIViewController {
         questionView.answerLabel.isHidden = true
         questionView.hintLabel.isHidden = true
         
-        questionIndexItem.title = "\(questionIndex + 1)/\(questionGroup.questions.count)"
+        questionIndexItem.title = questionStrategy.questionIndexTitle()
     }
     
     @IBAction func toggleAnswerLabels(_ sender: Any) {
@@ -82,22 +80,22 @@ public class QuestionViewController: UIViewController {
     }
     
     @IBAction func handleCorrect(_ sender: Any) {
-        correctCount += 1
-        questionView.correctCountLabel.text = "\(correctCount)"
+        let question = questionStrategy.currentQuestion()
+        questionStrategy.markQuestionCorrect(question)
+        questionView.correctCountLabel.text = String(questionStrategy.correctCount)
         showNextQuestion()
     }
     
     @IBAction func handleIncorrect(_ sender: Any) {
-        incorrectCount += 1
-        questionView.incorrectCountLabel.text = "\(incorrectCount)"
+        let question = questionStrategy.currentQuestion()
+        questionStrategy.markQuestionIncorrect(question)
+        questionView.incorrectCountLabel.text = "\(questionStrategy.incorrectCount)"
         showNextQuestion()
     }
     
-    func showNextQuestion() {
-        questionIndex += 1
-        guard questionIndex < questionGroup.questions.count else {
-            selectedGroupDelegate?.questionViewController(self, didComplete: questionGroup)
-            
+    private func showNextQuestion() {
+        guard questionStrategy.advanceToNextQuestion() else {
+            selectedGroupDelegate?.questionViewController(self, didComplete: questionStrategy)
             return
         }
         

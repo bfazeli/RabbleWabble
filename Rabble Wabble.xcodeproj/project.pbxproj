@@ -18,6 +18,9 @@
 		73645D4C221F55CB002A1412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73645D4B221F55CB002A1412 /* Assets.xcassets */; };
 		73645D4E221F582E002A1412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73645D4D221F582E002A1412 /* LaunchScreen.storyboard */; };
 		73645D50221F5B4D002A1412 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73645D4F221F5B4D002A1412 /* QuestionView.swift */; };
+		73D4C7732225BAD300E5DCEC /* QuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D4C7722225BAD300E5DCEC /* QuestionStrategy.swift */; };
+		73D4C7752225BC5800E5DCEC /* SequentialQuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D4C7742225BC5800E5DCEC /* SequentialQuestionStrategy.swift */; };
+		73D4C7772225C16100E5DCEC /* RandomQuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D4C7762225C16100E5DCEC /* RandomQuestionStrategy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		73645D4B221F55CB002A1412 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73645D4D221F582E002A1412 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73645D4F221F5B4D002A1412 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		73D4C7722225BAD300E5DCEC /* QuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategy.swift; sourceTree = "<group>"; };
+		73D4C7742225BC5800E5DCEC /* SequentialQuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequentialQuestionStrategy.swift; sourceTree = "<group>"; };
+		73D4C7762225C16100E5DCEC /* RandomQuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomQuestionStrategy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 				73645D41221F4EE7002A1412 /* Controllers */,
 				73645D42221F4EF1002A1412 /* Models */,
 				73645D43221F4EF8002A1412 /* Resources */,
+				73D4C7712225BAB000E5DCEC /* Strategies */,
 				73645D44221F4F01002A1412 /* Views */,
 			);
 			path = "Rabble Wabble";
@@ -120,6 +127,16 @@
 				733D148B22249586005C8D82 /* QuestionGroupCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		73D4C7712225BAB000E5DCEC /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				73D4C7722225BAD300E5DCEC /* QuestionStrategy.swift */,
+				73D4C7742225BC5800E5DCEC /* SequentialQuestionStrategy.swift */,
+				73D4C7762225C16100E5DCEC /* RandomQuestionStrategy.swift */,
+			);
+			path = Strategies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,13 +210,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73D4C7752225BC5800E5DCEC /* SequentialQuestionStrategy.swift in Sources */,
 				73645D46221F53AE002A1412 /* Question.swift in Sources */,
 				733BAFD0221F194C00A427DA /* QuestionViewController.swift in Sources */,
+				73D4C7772225C16100E5DCEC /* RandomQuestionStrategy.swift in Sources */,
 				733BAFCE221F194C00A427DA /* AppDelegate.swift in Sources */,
 				73645D48221F541B002A1412 /* QuestionGroup.swift in Sources */,
 				73645D50221F5B4D002A1412 /* QuestionView.swift in Sources */,
 				73645D4A221F54C8002A1412 /* QuestionGroupData.swift in Sources */,
 				733D148A222493F2005C8D82 /* SelectQuestionGroupViewController.swift in Sources */,
+				73D4C7732225BAD300E5DCEC /* QuestionStrategy.swift in Sources */,
 				733D148C22249586005C8D82 /* QuestionGroupCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

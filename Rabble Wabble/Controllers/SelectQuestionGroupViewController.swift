@@ -49,7 +49,8 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
             return
         }
         
-        questionViewController.questionGroup = selectedQuestionGroup
+        // Specify which strategy to use
+        questionViewController.questionStrategy = SequentialQuestionStrategy(questionGroup: selectedQuestionGroup)
         
         // Tells the owner that I want to be the one that conforms to your protocols
         questionViewController.selectedGroupDelegate = self
@@ -59,10 +60,11 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
 extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
     
     // When either method is called by the owner, handle what to do
-    public func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int) {
+    public func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionStrategy) {
         navigationController?.popToViewController(self, animated: true)
     }
-    public func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionGroup) {
+    
+    public func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionStrategy) {
         navigationController?.popToViewController(self, animated: true)
     }
     
