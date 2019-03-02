@@ -37,6 +37,7 @@ public class QuestionViewController: UIViewController {
     //  Wouldn't need weak if :class wasn't used
     public weak var selectedGroupDelegate: QuestionViewControllerDelegate?
     
+    // questionStrategy is set by SelectQuestionGroupViewCon which conforms to the QuestionViewControllerDelegate
     public var questionStrategy: QuestionStrategy! {
         didSet {
             navigationItem.title = questionStrategy.title
