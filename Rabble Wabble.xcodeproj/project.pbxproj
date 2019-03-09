@@ -18,6 +18,7 @@
 		73645D4C221F55CB002A1412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73645D4B221F55CB002A1412 /* Assets.xcassets */; };
 		73645D4E221F582E002A1412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73645D4D221F582E002A1412 /* LaunchScreen.storyboard */; };
 		73645D50221F5B4D002A1412 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73645D4F221F5B4D002A1412 /* QuestionView.swift */; };
+		7378285822337BB8001B7969 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378285722337BB8001B7969 /* AppSettingsViewController.swift */; };
 		73B6E58E222A10E500ECF340 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B6E58D222A10E500ECF340 /* AppSettings.swift */; };
 		73D4C7732225BAD300E5DCEC /* QuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D4C7722225BAD300E5DCEC /* QuestionStrategy.swift */; };
 		73D4C7752225BC5800E5DCEC /* SequentialQuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D4C7742225BC5800E5DCEC /* SequentialQuestionStrategy.swift */; };
@@ -38,6 +39,7 @@
 		73645D4B221F55CB002A1412 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73645D4D221F582E002A1412 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73645D4F221F5B4D002A1412 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		7378285722337BB8001B7969 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
 		73B6E58D222A10E500ECF340 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		73D4C7722225BAD300E5DCEC /* QuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategy.swift; sourceTree = "<group>"; };
 		73D4C7742225BC5800E5DCEC /* SequentialQuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequentialQuestionStrategy.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				733BAFCF221F194C00A427DA /* QuestionViewController.swift */,
 				733D1489222493F2005C8D82 /* SelectQuestionGroupViewController.swift */,
+				7378285722337BB8001B7969 /* AppSettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				733BAFCE221F194C00A427DA /* AppDelegate.swift in Sources */,
 				73645D48221F541B002A1412 /* QuestionGroup.swift in Sources */,
 				73645D50221F5B4D002A1412 /* QuestionView.swift in Sources */,
+				7378285822337BB8001B7969 /* AppSettingsViewController.swift in Sources */,
 				73645D4A221F54C8002A1412 /* QuestionGroupData.swift in Sources */,
 				733D148A222493F2005C8D82 /* SelectQuestionGroupViewController.swift in Sources */,
 				73D4C7732225BAD300E5DCEC /* QuestionStrategy.swift in Sources */,
