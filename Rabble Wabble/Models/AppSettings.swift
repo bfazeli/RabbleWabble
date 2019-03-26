@@ -14,8 +14,13 @@ public class AppSettings {
         static let questionStrategy = "questionStrategy"
     }
     
+    // MARK: - Class type
+    public static let shared = AppSettings()
+    
+    private let userDefaults = UserDefaults.standard
+    
     // MARK: - Instance Properties
-    public var questionStrategyType: QuestionStrategyType {
+    public var questionStrategyType: QuestionStrategyType {     // Computer property
         get {
             let rawValue = userDefaults.integer(forKey: Keys.questionStrategy)
             return QuestionStrategyType.init(rawValue: rawValue)!
@@ -24,15 +29,13 @@ public class AppSettings {
             userDefaults.set(newValue.rawValue, forKey: Keys.questionStrategy)
         }
     }
-    private let userDefaults = UserDefaults.standard
     
     // MARK: - Instance Methods
+    //    convenience method
     public func questionStrategy(for questionGroup: QuestionGroup) -> QuestionStrategy {
         return questionStrategyType.questionStrategy(for: questionGroup)
     }
     
-    // MARK: - Class type
-    public static let shared = AppSettings()
     
     // MARK: - Object Lifecycle
     private init(){}

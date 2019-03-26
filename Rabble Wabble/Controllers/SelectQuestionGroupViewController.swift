@@ -17,6 +17,8 @@ public class SelectQuestionGroupViewController: UIViewController {
     
     internal let questionGroups = QuestionGroup.allGroups()
     private var selectedQuestionGroup : QuestionGroup!
+    
+    private let appSettings = AppSettings.shared
 }
 
 extension SelectQuestionGroupViewController: UITableViewDataSource {
@@ -50,7 +52,7 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
         }
         
         // Specify which strategy to use
-        questionViewController.questionStrategy = SequentialQuestionStrategy(questionGroup: selectedQuestionGroup)
+        questionViewController.questionStrategy = appSettings.questionStrategy(for: selectedQuestionGroup)
         
         // Tells the owner that I want to be the one that conforms to your protocols
         questionViewController.selectedGroupDelegate = self
