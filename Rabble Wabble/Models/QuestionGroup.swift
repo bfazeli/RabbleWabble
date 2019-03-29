@@ -6,9 +6,11 @@
 //  Copyright © 2019 Fazeli, Bijan. All rights reserved.
 //
 
-public struct QuestionGroup {
+
+// MARK: - Originator
+// Modified struct to be a class for pass by reference
+public class QuestionGroup: Codable {
     
-    // MARK: - Originator
     public class Score: Codable {
         public var correctCount: Int = 0
         public var incorrectCount: Int = 0

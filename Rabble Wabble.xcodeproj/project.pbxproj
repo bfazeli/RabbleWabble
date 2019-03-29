@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7302E99E224ED50000B42FE3 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302E99D224ED50000B42FE3 /* DiskCaretaker.swift */; };
 		733BAFCE221F194C00A427DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733BAFCD221F194C00A427DA /* AppDelegate.swift */; };
 		733BAFD0221F194C00A427DA /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733BAFCF221F194C00A427DA /* QuestionViewController.swift */; };
 		733BAFD3221F194C00A427DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733BAFD1221F194C00A427DA /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7302E99D224ED50000B42FE3 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		733BAFCA221F194C00A427DA /* Rabble Wabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rabble Wabble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		733BAFCD221F194C00A427DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		733BAFCF221F194C00A427DA /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7302E99C224ED4C000B42FE3 /* Caretakers */ = {
+			isa = PBXGroup;
+			children = (
+				7302E99D224ED50000B42FE3 /* DiskCaretaker.swift */,
+			);
+			path = Caretakers;
+			sourceTree = "<group>";
+		};
 		733BAFC1221F194C00A427DA = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +86,7 @@
 		733BAFCC221F194C00A427DA /* Rabble Wabble */ = {
 			isa = PBXGroup;
 			children = (
+				7302E99C224ED4C000B42FE3 /* Caretakers */,
 				73645D40221F4ED1002A1412 /* AppDelegate */,
 				73645D41221F4EE7002A1412 /* Controllers */,
 				73645D42221F4EF1002A1412 /* Models */,
@@ -225,6 +236,7 @@
 				73645D48221F541B002A1412 /* QuestionGroup.swift in Sources */,
 				73645D50221F5B4D002A1412 /* QuestionView.swift in Sources */,
 				7378285822337BB8001B7969 /* AppSettingsViewController.swift in Sources */,
+				7302E99E224ED50000B42FE3 /* DiskCaretaker.swift in Sources */,
 				73645D4A221F54C8002A1412 /* QuestionGroupData.swift in Sources */,
 				733D148A222493F2005C8D82 /* SelectQuestionGroupViewController.swift in Sources */,
 				73D4C7732225BAD300E5DCEC /* QuestionStrategy.swift in Sources */,
