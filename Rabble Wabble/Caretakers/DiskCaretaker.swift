@@ -12,11 +12,11 @@ public final class DiskCaretaker {
     public static let decoder = JSONDecoder()
     public static let encoder = JSONEncoder()
     
-    // Saves codable objects
+    // Saves any obj that conforms to codable
     public static func save <T: Codable> (_ object: T, to fileName: String) throws {
         do {
             let url = createDocumentURL(withFileName: fileName)
-            let data = try encoder.encode(object)
+            let data = try encoder.encode(object)   // Data type after encoding
             
             try data.write(to: url, options: .atomic)   // Creates a temp file first and then moves the file cont
         } catch (let error) {
@@ -25,11 +25,13 @@ public final class DiskCaretaker {
         }
     }
     
+    // Retrieves any obj that conforms to codable
     public static func retrieve<T: Codable>(_ type: T.Type, from fileName: String) throws -> T {
         let url = createDocumentURL(withFileName: fileName)
         return try retrieve(T.self, from: url)
     }
     
+    // Helper method for retrieve
     public static func retrieve<T: Codable>(_ type: T.Type, from url: URL) throws -> T {
         do {
             let data = try Data(contentsOf: url)
